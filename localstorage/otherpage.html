@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Display localStorage/sessionStorage contents</title>
+</head>
+<body>
+<!--do tego dokumentu prowadzi link z index.html. Bedzie on wyswietlał dane przechowywane w localStorage i sessionStorage. Użyję do tego skryptu poniżej -->
+<script type="text/javascript">
+	document.write("<h1>Hi "+localStorage.username+" from "+localStorage.country+"</h1>");
+	/* metoda localStorage.length() zwraca ilość obiektów przechowywanych w localStorage. Umożliwia to przejscie pętlą for i dostep do wszystkich obiektów tam przechowywanych
+	document.write("<h1>"+localStorage.length+"</h1>");
+	*/
+	/* metoda localStorage.key(i) zwraca nazwę klucza o indeksie i */
+	document.write("<h2>"+localStorage.key(0)+"</h1>"); 
+	document.write("All keys: ");
+	for(var i=0; i<localStorage.length;i++)
+		{
+			document.write("Key "+i+" is: "+localStorage.key(i)+"\n");
+		}
+	/*metoda localStorage.getItem(key) zwraca wartość dla podanego klucza*/
+	document.write("<h1>"+localStorage.getItem("country")+"</h1>");
+	document.write("<h2>"+localStorage.getItem(localStorage.key(0))+"</h2>");
+	/*metoda localStorage.removeItem() usuwa wybrany rekord z pamięci, parametrem jest klucz */
+	localStorage.removeItem("country");
+	//document.write("<h1> Hi "+sessionStorage.username+"</h1>");
+</script>
+</body>
+</html>

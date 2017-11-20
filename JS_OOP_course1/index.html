@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>JS OOP testscript 1</title>
+	<style type="text/css">
+	img
+	{
+		width: 300px;
+		height: 300px;
+	}
+	</style>
+	<script type="text/javascript" src="rotateGear.js"></script>
+</head>
+<body onload="rotateGear()">
+<!-- animated gears with JS classes -->
+<img id="img1"src="gear.png" alt="pic1" style="float: left;">
+<img id="img2"src="gear.png" alt="pic1" style="float: left;">
+<img id="img3"src="gear.png" alt="pic1" style="float: left;">
+
+<!-- teraz utworze 3 obiekty odpowiadajace 3 kołom zębatym -->
+<script type="text/javascript">
+	var img1Rotate = new rotateGear();
+	var img2Rotate = new rotateGear();
+	var img3Rotate = new rotateGear();
+
+//po inicjalizacji obiektów, czas wywołać na nich metody odpowiedzialne za animację
+	img1Rotate.animate("img1", "cw");
+	img2Rotate.animate("img2", "ccw");
+	img3Rotate.animate("img3", "cw");
+
+</script>
+
+<!--
+<script type="text/javascript">
+	//utworzenie klasy w JS to po prostu zadeklarowanie funkcji
+	function exampleClass(name) //lub var exampleClass = function() {}
+	{
+		//atrybuty tworzę i ustawiam, używając słowa kluczowego "this"
+		this.property1 = 5;
+		this.name = name;
+		this.property3 = "Text";
+
+		//tworzenie metod w JS:
+		//1) podobnie jak atrybuty:
+		this.method1 = function method1(arg1) {
+			alert("Hej, wartosć property1 dla klasy exampleClass = "+this.property1);
+			alert(arg1 + "World, and you live on it, " +this.name);
+		}
+		//2) za pomoca prototypow
+		exampleClass.prototype.sayHello = function(arg2)
+		{
+			alert("Hello "+this.name+"! You have passed argument "+arg2+" to this method!");
+
+		}
+	}
+
+	//po utworzeniu klasy, czas na instancję klasy, czyli obiekt:
+	//(a zrobię sobie ze 2 obiekty)
+	var instance1 = new exampleClass("Mateusz");
+	var instance2 = new exampleClass("Iwona");
+	//po utworzeniu obiektów wywołam testowe metody
+	instance1.method1("Beautiful");
+	instance2.sayHello("Kocham Mateusza");
+	//poprzez metody mogę zmieniać dowolnie atrybuty klasy(póki co nie jestem pewien, ale chyba to troche inaczej niz z C++ - tam atryvuty sa prywatne - do głębszej rozkminy)
+	alert(instance1.property3 = "Not text :)");
+	//sytuacja przy wywoływaniu tego samego atrybutu z dwóch różnych instancji
+	//gdy tworze obiekt, nie zmieniajac przy tym własciwosci, to obiekt ma 
+	alert(instance1.property1);
+	alert(instance2.property1);
+
+</script> -->
+</body>
+</html>

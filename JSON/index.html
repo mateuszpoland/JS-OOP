@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JSON-part1</title>
+</head>
+<body>
+<div class="output" style="width: 200px; height: 400px; background: lightgray; color: black; font-weight: 500;"><h3 style="text-align: center;">Available foods</h3><div id="outputcontents" style="width: 180px; height: 300px; margin: auto; border:1px solid gray;"></div></div>
+<script type="text/javascript">
+	//nowy obiekt JSON - struktura {klucz: wartość, klucz: wartość..}
+	var obj1 = {user: "John", age: "21", country: "Russia", };
+	var obj2 = {user: "Anne", age: "24", country: "Poland", };
+	var obj3 = {user: "Chris", age: "30", country: "USA", };
+	
+	//nastepnie tworze obiekt JSON z 3 poprzednich obiektow, w dalszym ciagu zachowujac notacje klucz:wartosc
+	//dzięki temu moge robić "data nesting" i to naprawde gleboko
+	var obj4 = {user1:obj1, user2:obj2, user3:obj3};
+	//teraz pokaze zapisane dane na ekranie, używając dot notation(obj.property)
+	document.write(obj1.user);
+	document.write("<br/>"+obj2.user+" is "+obj2.age+" years old, and from "+obj2.country);
+	//zmienie zawartosc jakiegos obiektu:
+	obj3.country = "Italy";
+	//chcac poruszac sie w zagniezdzonym obiekcie JSON, wielokrotnie uzywam operatora kropki.
+	document.write("<hr/>"+obj4.user1.country);
+	//lub, alternatywnie:
+	document.write("<hr/>"+obj4["user1"]["country"]);
+	
+
+//kolejnym zadaniem jest stworzenie obiektów JSON, któe przechowaja dane wpisane do Arrayów
+	var meats = ["beef", "pork", "poultry", "lamb"];
+	var fruits = ["apple", "plum", "grape", "orange"];
+//stworzylem obiekt JSON, który przechowuje oba Arraye pod 2ma kluczami
+	var food = {category1: meats, category2: fruits};
+//znow wypisze wartosci na eranie 
+//tutaj wybierze "poultry" 
+	//document.write(food.category1[2]);
+	//a ponizej po kolei wypisze petla for wszystkie elementy
+	var numcat = 2;
+
+	while(numcat>=1)
+	{
+		if (numcat ==2 ){
+			//nie da sie łatwo zwrócić nazwy klucza w obiekcie JSON
+			document.getElementById("outputcontents").innerHTML+="FRUITS:"+"<hr/>";
+			for(var i=0; i<4; i++){
+				document.getElementById("outputcontents").innerHTML+=food.category2[i]+"<br/>";
+			}
+		}else{
+			document.getElementById("outputcontents").innerHTML+="MEATS::"+"<hr/>";
+			for(var i=0; i<4; i++){
+				document.getElementById("outputcontents").innerHTML+=food.category1[i]+"<br/>";
+			}
+		}	
+
+			numcat--;
+		}
+
+</script>
+</body>
+</html>
